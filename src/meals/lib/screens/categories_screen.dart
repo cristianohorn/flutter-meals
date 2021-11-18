@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:meals/models/category.dart';
 import '../components/category_item.dart';
 import '../data/dummy_data.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({Key? key}) : super(key: key);
+  const CategoriesScreen(this.availableCategories, {Key? key})
+      : super(key: key);
+  
+  final List<Category> availableCategories;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class CategoriesScreen extends StatelessWidget {
         crossAxisSpacing: 20,
         mainAxisSpacing: 20,
       ),
-      children: DUMMY_CATEGORIES.map((cat) => CategoryItem(cat)).toList(),
+      children: availableCategories.map((cat) => CategoryItem(cat)).toList(),
     );
   }
 }
